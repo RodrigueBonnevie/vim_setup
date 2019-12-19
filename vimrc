@@ -35,23 +35,43 @@ nnoremap p "*p
 nnoremap y "+y
 nnoremap p "+p
 nnoremap d "+d
-nnoremap \ :noh
 
 vnoremap p "*p
 vnoremap y "+y
 vnoremap p "+p
 vnoremap d "+d
-vnoremap \ :noh
 
-" lightline
-  set laststatus=2
+
+" vim-plug install
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 "Plug 'tpope/vim-sensible'
-Plug 'ervandew/supertab' 
+"Plug 'ervandew/supertab' 
 Plug 'ycm-core/YouCompleteMe'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'dracula/vim',{'as':'dracula'}
+Plug 'jeaye/color_coded'
+"Plug 'scrooloose/nerdcommenter'
 call plug#end()
+
+" lightline
+    set laststatus=2
+" vim-cpp-enhanced-highlight
+    let g:cpp_member_variable_highlight = 1
+    let g:cpp_class_decl_highlight = 1
+    let g:cpp_class_scope_highlight = 1
+" YCM
+    let g:ycm_enable_diagnostic_signs = 0
+    let g:ycm_enable_diagnostic_highlighting = 0
+" color_coded
+":colorsheme twilighted
